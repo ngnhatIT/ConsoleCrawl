@@ -15,7 +15,7 @@ namespace Infrastructure
                 .AddJsonFile("appsettings.json")
                 .Build();
             var connectionString = configuration.GetConnectionString("connectionString");
-            optionsBuilder.UseMySQL(connectionString);
+            optionsBuilder.UseMySql(connectionString ?? "", ServerVersion.AutoDetect(connectionString));
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
